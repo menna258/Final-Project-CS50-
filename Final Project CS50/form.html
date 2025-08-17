@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book a Table - Seoul Bites</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header id="top">
+      <h1>Seoul Bites</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="form.html">Book a Table</a>
+      </nav>
+    </header>
+    <div class="form-page">
+      <div class="form-container">
+        <h2>Book a Table</h2>
+        <form id="bookingForm">
+          <label for="name">Name:</label>
+          <input type="text" id="name" required placeholder="Enter your name" />
+
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            required
+            placeholder="Enter your email"
+          />
+          <label for="guests">Number of Guests:</label>
+          <input
+            type="number"
+            id="guests"
+            min="1"
+            required
+            placeholder="Enter number of guests"
+          />
+
+          <label for="date">Date:</label>
+          <input type="date" id="date" required />
+
+          <label for="time">Time:</label>
+          <input type="time" id="time" required />
+
+          <button type="submit">Submit</button>
+        </form>
+        <p id="confirmation" class="hidden">
+          Accepted! Your booking is confirmed.
+        </p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <footer>
+      <p>&copy; Seoul Bites</p>
+    </footer>
+  </body>
+</html>
