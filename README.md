@@ -2,7 +2,7 @@
 
 A responsive Korean restaurant website built with **HTML, CSS and vanilla JavaScript** as my final project for CS50.
 
-**Live demo:** https://menna258.github.io/Final-Project-CS50-/Final%20Project%20CS50/
+**Live demo:** https://final-project-cs50.pages.dev (also on [GitHub Pages](https://menna258.github.io/Final-Project-CS50-/))
 
 ## Features
 
