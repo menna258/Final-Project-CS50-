@@ -6,56 +6,69 @@
     <meta name="description" content="Seoul Bites - authentic Korean food. Browse the menu, order online and book a table." />
     <title>Seoul Bites | Korean Food Menu</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍜</text></svg>" />
+    <script>
+      // Apply the saved theme and language before the page is drawn, so it doesn't flash.
+      (function () {
+        var theme, lang;
+        try { theme = localStorage.getItem("seoulBitesTheme"); lang = localStorage.getItem("seoulBitesLang"); } catch (e) {}
+        var root = document.documentElement;
+        root.dataset.theme = theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        if (lang === "ar") { root.lang = "ar"; root.dir = "rtl"; }
+      })();
+    </script>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body data-title="page.menu">
     <header id="top">
       <a class="logo" href="index.html">Seoul Bites</a>
       <nav>
-        <a href="index.html" aria-current="page">Menu</a>
-        <a href="form.html">Book a Table</a>
+        <a href="index.html" aria-current="page" data-i18n="nav.menu">Menu</a>
+        <a href="form.html" data-i18n="nav.book">Book a Table</a>
         <button class="cart-button" id="cartButton" type="button" aria-controls="cart" aria-expanded="false">
-          Cart <span class="cart-count" id="cartCount">0</span>
+          <span data-i18n="nav.cart">Cart</span> <span class="cart-count" id="cartCount">0</span>
         </button>
+        <button class="toggle" id="langToggle" type="button">عربي</button>
+        <button class="toggle" id="themeToggle" type="button" aria-label="Switch to dark mode">🌙</button>
       </nav>
     </header>
 
     <main>
       <section class="hero">
-        <h1>Authentic Korean food, made fresh</h1>
-        <p>Pick your favourite dishes, add them to your cart and order in seconds.</p>
+        <h1 data-i18n="hero.title">Authentic Korean food, made fresh</h1>
+        <p data-i18n="hero.text">Pick your favourite dishes, add them to your cart and order in seconds.</p>
       </section>
 
       <section class="toolbar" aria-label="Filter the menu">
-        <label class="visually-hidden" for="search">Search dishes</label>
-        <input type="search" id="search" placeholder="Search dishes..." autocomplete="off" />
+        <label class="visually-hidden" for="search" data-i18n="search.label">Search dishes</label>
+        <input type="search" id="search" placeholder="Search dishes..." data-i18n-placeholder="search.placeholder" autocomplete="off" />
         <div class="categories" id="categories" role="group" aria-label="Categories"></div>
       </section>
 
       <section class="menu" id="menu" aria-live="polite"></section>
-      <p class="empty hidden" id="noResults">No dishes match your search.</p>
+      <p class="empty hidden" id="noResults" data-i18n="menu.empty">No dishes match your search.</p>
     </main>
 
     <div class="overlay hidden" id="overlay"></div>
     <aside class="cart" id="cart" aria-label="Your cart" aria-hidden="true">
       <div class="cart-header">
-        <h2>Your Cart</h2>
-        <button class="icon-button" id="closeCart" type="button" aria-label="Close cart">&times;</button>
+        <h2 data-i18n="cart.title">Your Cart</h2>
+        <button class="icon-button" id="closeCart" type="button" aria-label="Close cart" data-i18n-aria="cart.close">&times;</button>
       </div>
       <ul class="cart-items" id="cartItems"></ul>
-      <p class="empty" id="cartEmpty">Your cart is empty.</p>
+      <p class="empty" id="cartEmpty" data-i18n="cart.empty">Your cart is empty.</p>
       <div class="cart-footer">
         <div class="cart-total">
-          <span>Total</span>
+          <span data-i18n="cart.total">Total</span>
           <strong id="cartTotal">0 EGP</strong>
         </div>
-        <button class="primary" id="checkout" type="button">Place Order</button>
+        <button class="primary whatsapp" id="checkout" type="button" data-i18n="cart.checkout">Order on WhatsApp</button>
+        <p class="note" data-i18n="cart.note">Your order is sent to the restaurant on WhatsApp.</p>
         <p class="success hidden" id="orderConfirmation" role="status"></p>
       </div>
     </aside>
 
     <footer>
-      <p>&copy; <span id="year"></span> Seoul Bites. All rights reserved.</p>
+      <p>&copy; <span id="year"></span> Seoul Bites. <span data-i18n="footer.rights">All rights reserved.</span></p>
     </footer>
 
     <script src="script.js"></script>

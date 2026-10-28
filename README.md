@@ -8,13 +8,16 @@ A responsive Korean restaurant website built with **HTML, CSS and vanilla JavaSc
 
 - **Menu** of 14 Korean dishes with photos, descriptions and prices (EGP)
 - **Categories** (Street Food, Main Dishes, Soups & Stews, Sides, Desserts, Vegan) and **live search**
-- **Shopping cart**: add dishes, change quantities, see the total and place an order. The cart is saved in `localStorage`, so it survives a page refresh
+- **Shopping cart**: add dishes, change quantities and see the total. The cart is saved in `localStorage`, so it survives a page refresh
+- **Order and book on WhatsApp**: the order or booking opens in WhatsApp as a ready-made message to the restaurant (number set in `WHATSAPP_NUMBER` in `script.js`)
 - **Table booking form** with validation:
   - name, email and Egyptian mobile number checks
   - 1 to 12 guests
   - no past dates, bookings up to 60 days ahead
   - only during opening hours (12:00 PM - 11:00 PM), and no times that have already passed today
   - a confirmation message with the booking details
+- **English and Arabic**: one click switches the whole site, including dishes, errors and WhatsApp messages, with a right-to-left layout for Arabic
+- **Dark mode**: follows the device setting by default; the choice is remembered
 - **Responsive design** for phones, tablets and desktops
 - Accessible: labelled inputs, keyboard support (Esc closes the cart) and visible focus styles
 

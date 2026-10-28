@@ -4,8 +4,34 @@
   --text: #222;
   --muted: #666;
   --card: #fff;
+  --form-bg: rgba(255, 255, 255, 0.95);
+  --surface-2: #f7f7f7;
+  --border: #eee;
+  --input-border: #ccc;
+  --chip-bg: rgba(255, 255, 255, 0.85);
+  --badge-bg: #e3f5df;
+  --success-bg: #e3f5df;
   --green: #247d18;
   --error: #c62828;
+  --page-shade: rgba(0, 0, 0, 0);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --pink-dark: #ff7ab3;
+  --text: #ececf1;
+  --muted: #a7a7b3;
+  --card: #1e1e24;
+  --form-bg: rgba(30, 30, 36, 0.96);
+  --surface-2: #2a2a32;
+  --border: #33333c;
+  --input-border: #4a4a55;
+  --chip-bg: rgba(30, 30, 36, 0.85);
+  --badge-bg: #1c3a1f;
+  --success-bg: #16331a;
+  --green: #7fd47a;
+  --error: #ff8a80;
+  --page-shade: rgba(0, 0, 0, 0.55);
 }
 
 * {
@@ -20,7 +46,7 @@ body {
   font-family: Arial, sans-serif;
   color: var(--text);
   background-color: var(--pink);
-  background-image: url("img/background.jpg");
+  background-image: linear-gradient(var(--page-shade), var(--page-shade)), url("img/background.jpg");
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -28,6 +54,10 @@ body {
 
 main {
   flex: 1;
+}
+
+:root[lang="ar"] body {
+  font-family: Tahoma, Arial, sans-serif;
 }
 
 .hidden {
@@ -102,11 +132,27 @@ nav a[aria-current="page"],
   background: #ffe3ef;
 }
 
+.toggle {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 12px;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.toggle:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
 .cart-count {
   display: inline-block;
   min-width: 22px;
   padding: 2px 6px;
-  margin-left: 4px;
+  margin-inline-start: 4px;
   border-radius: 11px;
   background: var(--pink);
   color: white;
@@ -152,6 +198,9 @@ nav a[aria-current="page"],
   border: none;
   border-radius: 25px;
   font-size: 16px;
+  font-family: inherit;
+  background: var(--card);
+  color: var(--text);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
 
@@ -164,7 +213,7 @@ nav a[aria-current="page"],
 
 .chip {
   border: 2px solid white;
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--chip-bg);
   color: var(--pink-dark);
   font-weight: bold;
   padding: 7px 16px;
@@ -230,7 +279,7 @@ nav a[aria-current="page"],
 }
 
 .badge {
-  background: #e3f5df;
+  background: var(--badge-bg);
   color: var(--green);
   font-size: 12px;
   font-weight: bold;
@@ -293,6 +342,30 @@ main > .empty {
   cursor: not-allowed;
 }
 
+.primary.whatsapp {
+  background-color: #1f9e55;
+}
+
+.primary.whatsapp:hover {
+  background-color: #17804a;
+}
+
+.primary.whatsapp:disabled {
+  background-color: #ccc;
+}
+
+.note {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  margin: 8px 0 0;
+}
+
+.success a {
+  color: var(--green);
+  font-weight: bold;
+}
+
 .primary.small {
   width: auto;
   padding: 8px 14px;
@@ -320,7 +393,7 @@ input:focus-visible {
   right: 0;
   height: 100%;
   width: min(380px, 100%);
-  background: white;
+  background: var(--card);
   z-index: 300;
   display: flex;
   flex-direction: column;
@@ -333,12 +406,23 @@ input:focus-visible {
   transform: translateX(0);
 }
 
+[dir="rtl"] .cart {
+  right: auto;
+  left: 0;
+  transform: translateX(-100%);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
+}
+
+[dir="rtl"] .cart.open {
+  transform: translateX(0);
+}
+
 .cart-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 18px 20px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border);
 }
 
 .cart-header h2 {
@@ -367,7 +451,7 @@ input:focus-visible {
   align-items: center;
   gap: 12px;
   padding: 10px 0;
-  border-bottom: 1px solid #f1f1f1;
+  border-bottom: 1px solid var(--border);
 }
 
 .cart-items img {
@@ -395,19 +479,20 @@ input:focus-visible {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 1px solid #ddd;
-  background: #f7f7f7;
+  border: 1px solid var(--input-border);
+  background: var(--surface-2);
+  color: var(--text);
   font-size: 18px;
   cursor: pointer;
 }
 
 .quantity button:hover {
-  background: #ffe3ef;
+  border-color: var(--pink);
 }
 
 .cart-footer {
   padding: 16px 20px 22px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--border);
 }
 
 .cart-total {
@@ -426,7 +511,7 @@ input:focus-visible {
 }
 
 .form-container {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--form-bg);
   padding: 28px;
   border-radius: 14px;
   width: 100%;
@@ -457,10 +542,12 @@ input:focus-visible {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--input-border);
   border-radius: 6px;
   font-size: 15px;
   font-family: inherit;
+  background: var(--card);
+  color: var(--text);
 }
 
 .form-container input[aria-invalid="true"] {
@@ -485,7 +572,7 @@ input:focus-visible {
 }
 
 .success {
-  background: #e3f5df;
+  background: var(--success-bg);
   color: var(--green);
   border-radius: 8px;
   padding: 12px 14px;
@@ -517,6 +604,11 @@ footer p {
   header {
     justify-content: center;
     padding: 12px 16px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .menu,
