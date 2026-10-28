@@ -3,57 +3,66 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Book a Table - Seoul Bites</title>
+    <meta name="description" content="Book a table at Seoul Bites." />
+    <title>Book a Table | Seoul Bites</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍜</text></svg>" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header id="top">
-      <h1>Seoul Bites</h1>
+      <a class="logo" href="index.html">Seoul Bites</a>
       <nav>
-        <a href="index.html">Home</a>
-        <a href="form.html">Book a Table</a>
+        <a href="index.html">Menu</a>
+        <a href="form.html" aria-current="page">Book a Table</a>
       </nav>
     </header>
-    <div class="form-page">
+
+    <main class="form-page">
       <div class="form-container">
-        <h2>Book a Table</h2>
-        <form id="bookingForm">
-          <label for="name">Name:</label>
-          <input type="text" id="name" required placeholder="Enter your name" />
+        <h1>Book a Table</h1>
+        <p class="hint">Open every day from 12:00 PM to 11:00 PM.</p>
 
-          <label for="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            required
-            placeholder="Enter your email"
-          />
-          <label for="guests">Number of Guests:</label>
-          <input
-            type="number"
-            id="guests"
-            min="1"
-            required
-            placeholder="Enter number of guests"
-          />
+        <form id="bookingForm" novalidate>
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" autocomplete="name" placeholder="Enter your name" />
+          <p class="error" id="nameError"></p>
 
-          <label for="date">Date:</label>
-          <input type="date" id="date" required />
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email" placeholder="name@example.com" />
+          <p class="error" id="emailError"></p>
 
-          <label for="time">Time:</label>
-          <input type="time" id="time" required />
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="01xxxxxxxxx" />
+          <p class="error" id="phoneError"></p>
 
-          <button type="submit">Submit</button>
+          <label for="guests">Number of Guests</label>
+          <input type="number" id="guests" name="guests" min="1" max="12" placeholder="1 - 12" />
+          <p class="error" id="guestsError"></p>
+
+          <div class="form-row">
+            <div>
+              <label for="date">Date</label>
+              <input type="date" id="date" name="date" />
+              <p class="error" id="dateError"></p>
+            </div>
+            <div>
+              <label for="time">Time</label>
+              <input type="time" id="time" name="time" min="12:00" max="23:00" step="1800" />
+              <p class="error" id="timeError"></p>
+            </div>
+          </div>
+
+          <button class="primary" type="submit">Confirm Booking</button>
         </form>
-        <p id="confirmation" class="hidden">
-          Accepted! Your booking is confirmed.
-        </p>
+
+        <div class="success hidden" id="confirmation" role="status"></div>
       </div>
-    </div>
+    </main>
+
+    <footer>
+      <p>&copy; <span id="year"></span> Seoul Bites. All rights reserved.</p>
+    </footer>
 
     <script src="script.js"></script>
-    <footer>
-      <p>&copy; Seoul Bites</p>
-    </footer>
   </body>
 </html>
