@@ -88,6 +88,8 @@ const TEXT = {
     "cart.addOne": "Add one {name}",
     "cart.sent": "Order #{number} is ready to send on WhatsApp ({total}). Just press send in the chat.",
     "whatsapp.fallback": "WhatsApp didn't open?",
+    "chat.label": "Chat with us on WhatsApp",
+    "chat.greeting": "Hello Seoul Bites!",
     "order.greeting": "Hello Seoul Bites! I'd like to place an order (#{number}):",
     "order.total": "Total: {total}",
     "currency": "EGP",
@@ -159,6 +161,8 @@ const TEXT = {
     "cart.addOne": "زوّد واحد {name}",
     "cart.sent": "طلب رقم #{number} جاهز يتبعت على واتساب ({total}). دوس إرسال في الشات.",
     "whatsapp.fallback": "الواتساب مافتحش؟",
+    "chat.label": "كلمنا على واتساب",
+    "chat.greeting": "أهلاً سيول بايتس!",
     "order.greeting": "أهلاً سيول بايتس! عايز أطلب (طلب رقم #{number}):",
     "order.total": "الإجمالي: {total}",
     "currency": "ج.م",
@@ -283,6 +287,11 @@ function sendOnWhatsApp(message) {
   const url = whatsAppLink(message);
   window.open(url, "_blank", "noopener");
   return url;
+}
+
+// The floating chat button opens a WhatsApp chat with a short greeting in the current language.
+function updateChatButton() {
+  document.getElementById("whatsappChat").href = whatsAppLink(t("chat.greeting"));
 }
 
 function fallbackLink(url) {
@@ -607,6 +616,8 @@ function escapeHtml(text) {
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("#year").forEach((el) => (el.textContent = new Date().getFullYear()));
   translatePage();
+  updateChatButton();
+  onLanguageChange.push(updateChatButton);
   setupLanguageToggle();
   setupThemeToggle();
   setupMenuPage();

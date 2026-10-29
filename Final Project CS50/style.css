@@ -584,6 +584,28 @@ input:focus-visible {
   margin: 6px 0 0;
 }
 
+/* ---------- WhatsApp chat button ---------- */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  inset-inline-end: 20px;
+  z-index: 150;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25d366;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+}
+
 /* ---------- Footer ---------- */
 footer {
   background-color: var(--pink);
